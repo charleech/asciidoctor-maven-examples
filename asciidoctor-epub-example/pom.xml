@@ -14,11 +14,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <asciidoctor.maven.plugin.version>2.0.0-RC.1</asciidoctor.maven.plugin.version>
-        <asciidoctorj.epub.version>1.5.0-alpha.9</asciidoctorj.epub.version>
-        <asciidoctorj.version>2.0.0</asciidoctorj.version>
+        <asciidoctor.maven.plugin.version>2.1.0</asciidoctor.maven.plugin.version>
+        <asciidoctorj.epub.version>1.5.0-alpha.18</asciidoctorj.epub.version>
+        <asciidoctorj.version>2.5.1</asciidoctorj.version>
         <!-- for a correct kf8 generation, you'll need at least jRuby >= 9.1.8.0 -->
-        <jruby.version>9.2.7.0</jruby.version>
+        <jruby.version>9.2.17.0</jruby.version>
         <!-- provide full path to kindlegen application if you need the fallback solution -->
         <path.to.kindlegen>/absolute/path/to/kindlegen</path.to.kindlegen>
     </properties>
@@ -54,6 +54,14 @@
                     <attributes>
                         <sourcedir>${project.build.sourceDirectory}</sourcedir>
                     </attributes>
+                    <resources>
+                        <resource>
+                            <directory>.</directory>
+                            <excludes>
+                                <exclude>**/**</exclude>
+                            </excludes>
+                        </resource>
+                    </resources>
                 </configuration>
                 <executions>
                     <!-- shows how to create an epub file -->
@@ -65,7 +73,6 @@
                         </goals>
                         <configuration>
                             <backend>epub3</backend>
-                            <sourceHighlighter>coderay</sourceHighlighter>
                             <sourceDocumentName>spine.adoc</sourceDocumentName>
                         </configuration>
                     </execution>
@@ -90,9 +97,9 @@
                         </goals>
                         <configuration>
                             <backend>epub3</backend>
-                            <sourceHighlighter>coderay</sourceHighlighter>
                             <sourceDocumentName>spine.adoc</sourceDocumentName>
                             <attributes>
+                                <source-highlighter>coderay</source-highlighter>
                                 <ebook-format>kf8</ebook-format>
                             </attributes>
                         </configuration>
