@@ -16,11 +16,11 @@ Refer to the README file in each individual project to learn how to run it.
 link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
 Demonstrates how to convert AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
 
+link:asciidoc-to-html-multipage-example/README.adoc[asciidoc-to-html-multipage-example]::
+Demonstrates how to convert AsciiDoc to multiple HTML pages with the Asciidoctor Maven plugin and https://github.com/owenh000/asciidoctor-multipage[Asciidoctor Multipage Extension^].
+
 link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
 Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
-
-link:docbook-pipeline-jdocbook-example/README.adoc[docbook-pipeline-jdocbook-example]::
-Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and jDocBook Maven plugins.
 
 link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
 Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
@@ -59,7 +59,7 @@ Invoke the `compile` goal (configured as the default goal) on this folder (`asci
 
 == On JRuby dependency
 
-Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the http://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the https://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
 [source,xml,indent=2]
 ----
 <plugin>
@@ -69,7 +69,7 @@ Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[as
     <dependencies>
         <dependency>
             <groupId>org.jruby</groupId>
-            <artifactId>jruby-complete</artifactId>
+            <artifactId>jruby</artifactId>
             <version>${jruby.version}</version>
         </dependency>
     <dependencies>
@@ -96,7 +96,7 @@ For example, to change the plugin's version follow the next steps:
 
 [source,xml,indent=2]
 ----
-<asciidoctor.maven.plugin.version>2.2.1</asciidoctor.maven.plugin.version>
+<asciidoctor.maven.plugin.version>2.2.2</asciidoctor.maven.plugin.version>
 ----
 
 [start=2]
@@ -124,7 +124,7 @@ We also need documentation, automation, design, marketing, communication, advoca
 Here are just a few of the ways you can contribute to the project:
 
 * Reporting bugs (_The easiest way to get started!_)
-* Sharing ideas on http://discuss.asciidoctor.org
+* Sharing ideas on https://asciidoctor.zulipchat.com/ or https://discuss.asciidoctor.org
 * Suggesting new feature or improvements in the issue tracker
 * Speaking about the technology
 * Advocating for the technology
@@ -164,6 +164,7 @@ Even when this project does not contain much code, we encourage the following go
 * Follow simples code conventions to improve readability on the web
 ** Use 4 white spaces instead of tabs
 ** Avoid long lines in the Java code (they’re good in AsciiDoc files though)
+* Tests are named after each example name.
 
 To help fixing some style conventions a small script has been included. Currently, it only checks for tabs, which should be replaced by white spaces.
 To see what files contain some inconsistency, run this command from the parent project.
